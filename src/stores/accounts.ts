@@ -4,13 +4,15 @@ import type { Account } from '@/types/account'
 
 const localStorageKey = 'accounts'
 
+type StoreUtilFields = { isVirtual?: boolean }
+
 export const useAccountsStore = defineStore('accounts', () => {
-  const list = ref([] as Account[])
+  const list = ref([] as (Account & StoreUtilFields)[])
 
   loadData()
 
   function saveData() {
-    const json = JSON.stringify(list.value)
+    const json = JSON.stringify(list.value.filter((item) => !item.isVirtual))
     localStorage.setItem(localStorageKey, json)
   }
 
@@ -25,8 +27,11 @@ export const useAccountsStore = defineStore('accounts', () => {
   }
 
   function addAccount(account: Omit<Account, 'id'>) {
-    const newAccount: Account = { ...account, id: crypto.randomUUID() }
-    list.value.push(newAccount)
+    list.value.push({
+      ...account,
+      id: crypto.randomUUID(),
+      isVirtual: true,
+    })
     saveData()
   }
 
@@ -42,6 +47,9 @@ export const useAccountsStore = defineStore('accounts', () => {
         ...list.value[index],
         ...newData,
         id: accountId,
+      }
+      if (list.value[index].isVirtual) {
+        list.value[index].isVirtual = undefined
       }
       saveData()
     }
