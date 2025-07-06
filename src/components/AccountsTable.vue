@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { NTable } from 'naive-ui'
-import { useAccountsStore } from '@/stores/accounts';
-import AccountsTableRow from './AccountsTableRow.vue';
+import { useAccountsStore } from '@/stores/accounts'
+import AccountsTableRow from './AccountsTableRow.vue'
 
-const accountsStore = useAccountsStore();
+const accountsStore = useAccountsStore()
 </script>
 
 <template>
@@ -17,7 +17,11 @@ const accountsStore = useAccountsStore();
       </tr>
     </thead>
     <tbody>
-      <accounts-table-row v-for="account in accountsStore.list" :account="account" :key="account.id" />
+      <accounts-table-row
+        v-for="account in accountsStore.list"
+        :account="account"
+        :key="account.id"
+      />
     </tbody>
   </n-table>
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { NButton, NIcon } from 'naive-ui'
 import { Add12Filled } from '@vicons/fluent'
-import { useAccountsStore } from '@/stores/accounts';
-import { AccountType } from '@/types/account';
+import { useAccountsStore } from '@/stores/accounts'
+import { AccountType } from '@/types/account'
 
 const store = useAccountsStore()
 
@@ -11,8 +11,8 @@ function handleClick() {
     marks: [],
     type: AccountType.LOCAL,
     login: '',
-    password: ''
-  });
+    password: '',
+  })
 }
 </script>
 

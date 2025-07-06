@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NAlert, NSpace, NLayout, NLayoutHeader, NLayoutContent, NH1 } from 'naive-ui'
-import AccountsTable from '@/components/AccountsTable.vue';
+import AccountsTable from '@/components/AccountsTable.vue'
 import AddAcccountButton from '@/components/AddAccountButton.vue'
 </script>
 
