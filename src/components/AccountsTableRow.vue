@@ -5,10 +5,12 @@ import { useAccountsStore } from '@/stores/accounts'
 import { AccountType, type Account } from '@/types/account';
 import RemoveAccountButton from '@/components/RemoveAccountButton.vue'
 
+const marksSeparator = ';'
+
 const props = defineProps<{ account: Account }>()
 const store = useAccountsStore()
 const localAccount = reactive({ ...props.account })
-const stringMarks = ref('')
+const stringMarks = ref(localAccount.marks.map(mark => mark.text).join(`${marksSeparator} `))
 
 const accountTypeSelectOptions = [
   {
@@ -22,7 +24,7 @@ const accountTypeSelectOptions = [
 ]
 
 function prepareAndUpdate(newValue: Account) {
-  newValue.marks = stringMarks.value.split(';').map((mark) => ({ text: mark.trim() }))
+  newValue.marks = stringMarks.value.split(marksSeparator).map((mark) => ({ text: mark.trim() }))
   if (newValue.type === AccountType.LDAP) {
     localAccount.password = "";
     newValue.password = null;
