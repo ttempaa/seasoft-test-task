@@ -1,16 +1,16 @@
 export enum AccountType {
   LOCAL = 'LOCAL',
-  LDAP = 'LDAP'
+  LDAP = 'LDAP',
 }
 
 export interface Mark {
-  text: string;
+  text: string
 }
 
 export interface Account {
-  id: string;
-  marks: Mark[];
-  type: AccountType;
-  login: string;
-  password: string;
+  id: string
+  marks: Mark[]
+  type: AccountType
+  login: string
+  password: string | null
 }
