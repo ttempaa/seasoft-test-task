@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "seasoft-test-task",
+      "name": "saasoft-test-task",
       "dependencies": {
         "@vicons/fluent": "^0.13.0",
         "naive-ui": "^2.42.0",
